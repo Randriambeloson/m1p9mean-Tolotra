@@ -5,9 +5,12 @@ require('rootpath')();
 const http = require('http');
 const express = require('express');
 const cors = require('cors');
+const { lstat } = require('fs');
+const MongoClient = require('mongodb').MongoClient;
+const {dbconnect} = require('./app/services/DBConnection.service')
 
 /* Initialisation des controllers */
-
+const UtilisateurController = require('./app/controllers/Utilisateur.controller');
 /* Fin initialisation*/ 
 
 
@@ -34,6 +37,8 @@ app.use('/', express.static(__dirname + '/'));
 /* Intégration des controllers à la constante app */
 
     /*  Mbola ho integrena */
+
+UtilisateurController(app);
 
 /* Fin integration Controllers*/
 

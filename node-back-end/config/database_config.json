@@ -1,0 +1,7 @@
+{
+    "username": "ekalydb",
+    "databasename": "ekalydb",
+    "password": "aL8GGiAw7M7FpkYh",
+    "server": "cluster0.ls6zp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "port": "5432"
+}
