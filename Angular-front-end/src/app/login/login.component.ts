@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ComponentService } from '../service/component.service';
+import { UtilisateurService } from '../service/utilisateur.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private componentService : ComponentService , private utilisateurService : UtilisateurService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    await this.get_all_user();
+    
+  }
+
+  async get_all_user() {
+     return await this.utilisateurService.getAllUser().subscribe(async (data : any) => {
+        console.log(data);
+        setTimeout(()=> {this.componentService.hide_loader()} , 1000)
+      } , (err) => {
+        console.log(err);
+      })
   }
 
 }

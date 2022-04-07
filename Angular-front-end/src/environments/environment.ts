@@ -14,3 +14,12 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+
+export const url = {
+  base_url : 'http://localhost:3000',
+  ws_url : 'ws://localhost:3000',
+  AMABIS_url : 'https://sw1.amabis.com'
+}
+export const base_url='http://localhost:3000';
+export const ws_url='ws://localhost:3000';

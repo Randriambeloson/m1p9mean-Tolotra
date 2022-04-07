@@ -27,9 +27,22 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/bootstrap/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [ 
+              "src/assets/bootstrap/js/jquery.min.js",
+              "src/assets/bootstrap/js/bootstrap.bundle.min.js",
+              "src/assets/fontawesome-free-5.15.3-web/js/all.min.js",
+              "src/assets/js/jimp.min.js",
+              "src/assets/js/socket.io/socket.io.js",
+              "src/assets/js/gpu-browser.js",
+              "src/assets/js/jimp.min.js",
+              "src/assets/js/raphael.min.js",
+              "src/assets/js/greiner-hormann.js",
+              "src/assets/js/martinez.umd.js",
+              "src/assets/js/main.umd.js"
+            ]
           },
           "configurations": {
             "production": {

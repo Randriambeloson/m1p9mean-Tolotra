@@ -75,7 +75,7 @@ module.exports = class UtilisateurModel{
 
      async delete_utilisateur_by_id_with_connexion(db , id) {
         var query = { id:id};
-        var result = await  db.collection("Utilisateur").deleteOne(query)
+        var result = await  db.collection("Utilisateur").deleteOne(query);
         
         return result;
      }
@@ -111,7 +111,6 @@ module.exports = class UtilisateurModel{
 
       async insert_Utilisateur_with_connexion(db , data) {
         var query = await data;
-        console.log(query);
         var result = await  db.collection("Utilisateur").insertOne(query)
         
         return result;

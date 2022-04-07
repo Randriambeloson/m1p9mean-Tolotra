@@ -1,1 +1,13 @@
-<p>signin works!</p>
+<label>nom</label>
+<input name="nom" id="nom" [(ngModel)] = "utilisateur.nom">
+
+<label>prenom</label>
+<input name="prenom" id="prenom" [(ngModel)] = "utilisateur.prenom">
+
+<label>identifiant</label>
+<input name="identifiant" id="identifiant" [(ngModel)] = "utilisateur.identifiant">
+
+<label>mdp</label>
+<input name="mdp" id="mdp" [(ngModel)] = "utilisateur.mdp">
+
+<button class="btn btn-dark" (click)="signin()"> S'inscrire</button>

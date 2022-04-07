@@ -24,16 +24,17 @@ const UtilisateurController = function(app){
     });
 
     app.post('/insert_utilisateur',async function(req,res){
-        let response = {};
-        let authorization = req.headers ["authorization"];
-        let utilisateur = new UtilisateurModel();
-        let data = {
-            nom : await req.body.nom ,
-            prenom : await req.body.prenom ,
-            mdp : await req.body.mdp 
-        }
-        console.log(req.body);
+            let response = {};
+            let authorization = req.headers ["authorization"];
+            let utilisateur = new UtilisateurModel();
         try{
+            if(req.body.nom == "undefined" || req.body.nom == "" || req.body.prenom == "undefined" || req.body.prenom == ""  || req.body.identifiant == "undefined" || req.body.identifiant == "" || req.body.mdp == "undefined" || req.body.mdp == "") throw new Error("Parametre invalide")
+            let data = {
+                nom : req.body.nom,
+                prenom : req.body.prenom,
+                identifiant : req.body.identifiant,
+                mdp : req.body.mdp
+            }
             response ["metadata"] = requestMetadata.requestMetadata.successMetadata;
             response ["data"] = await utilisateur.insert_utilisateur(data);
         }
@@ -60,6 +61,22 @@ const UtilisateurController = function(app){
             res.send(JSON.stringify(response));
         }
     });
+
+    app.post('/login' , async function(req,res) {
+        let response = {};
+        let authorization = req.headers ["authorization"];
+        let utilisateur = new UtilisateurModel();
+        try{
+            response ["metadata"] = requestMetadata.requestMetadata.successMetadata;
+            response ["data"] = await utilisateur.get_utilisateur();
+        }
+        catch(e){
+            response ["metadata"] = requestMetadata.requestMetadata.errorMetadata;
+            response ["errorMessage"] = e.message;
+        }finally{
+            res.send(JSON.stringify(response));
+        }
+    })
  
     app.post('/delete_utilisateur',async function(req,res){
         let response = {};
