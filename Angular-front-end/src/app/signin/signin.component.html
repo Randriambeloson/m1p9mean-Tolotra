@@ -48,10 +48,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="poste_utilisateur"><i class="fa fa-wrench"></i></label>
-                                <select name="poste_utilisateur" id="poste_utilisateur" [(ngModel)]="poste_utilisateur" (blur)="verifierChamp($event)" class="form-control styled-select" placeholder="choisissez un poste">
+                                <select name="poste_utilisateur" id="poste_utilisateur"  (blur)="verifierChamp($event)" class="form-control styled-select" placeholder="choisissez un poste">
                                     <option value="" selected>choisissez un poste</option>
-                                    <option *ngFor="let data of tableau_de_poste" [value] ="data.id_poste"> {{data.nom_poste}}</option>
-                                    <option value ="Livreur"> Livreur</option>
+                                    <option *ngFor="let data of tableau_de_poste" [value] ="data.pageAccessible" (click)="change(data)" > {{data.nomPoste}}</option>
 
                                 </select>
                                 <a id="erreur_poste_utilisateur" class="erreur-signin">  </a>

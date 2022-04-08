@@ -87,8 +87,8 @@ export class Utilisateur {
     }
 
     public set poste_utilisateur(posteUtilisateur : string){
-        if(posteUtilisateur.localeCompare("")==0) {
-            throw new FormError("renseigner ce champ" , 505 , "poste_utilisateur");
+        if(JSON.stringify(posteUtilisateur).localeCompare("")==0) {
+            throw new FormError("renseigner ce champ" , 505 , "poste_utiiisateur");
         }
         this._poste_utilisateur = posteUtilisateur;
     }
@@ -107,7 +107,7 @@ export class Utilisateur {
         var doc = document.getElementById("erreur_"+err.idChamp) ;
         if(doc!=null) { doc.innerHTML = "<a>"+err.message+"</a>"; } 
     }
-
+    
     public setError_signin(err : FormError) {
         var doc = document.getElementById(err.idChamp) ;
         if(doc!=null) doc.classList.add("erreur-input-signin");

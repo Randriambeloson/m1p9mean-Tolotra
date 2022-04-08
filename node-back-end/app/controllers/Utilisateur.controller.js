@@ -32,9 +32,14 @@ const UtilisateurController = function(app){
             let data = {
                 nom : req.body.nom,
                 prenom : req.body.prenom,
+                mail : req.body.mail,
+                poste : req.body.poste,
                 identifiant : req.body.identifiant,
-                mdp : req.body.mdp
+                mdp : req.body.mdp,
+
             }
+            console.log(req.body.poste);
+            console.log(data);
             response ["metadata"] = requestMetadata.requestMetadata.successMetadata;
             response ["data"] = await utilisateur.insert_utilisateur(data);
         }
@@ -93,6 +98,22 @@ const UtilisateurController = function(app){
         try{
             response ["metadata"] = requestMetadata.requestMetadata.successMetadata;
             response ["data"] = await utilisateur.delete_utilisateur_by_id(id);
+        }
+        catch(e){
+            response ["metadata"] = requestMetadata.requestMetadata.errorMetadata;
+            response ["errorMessage"] = e.message;
+        }finally{
+            res.send(JSON.stringify(response));
+        }
+    });
+
+    app.get('/get_all_poste',async function(req,res){
+        let response = {};
+        let authorization = req.headers ["authorization"];
+        let utilisateur = new UtilisateurModel();
+        try{
+            response ["metadata"] = requestMetadata.requestMetadata.successMetadata;
+            response ["data"] = await utilisateur.get_all_poste();
         }
         catch(e){
             response ["metadata"] = requestMetadata.requestMetadata.errorMetadata;

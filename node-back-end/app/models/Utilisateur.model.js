@@ -83,10 +83,39 @@ module.exports = class UtilisateurModel{
        }
      }
 
-     async get_utilisateur_with_connexion(db, data) {
+
+     async get_all_poste() {
+        let con = null;
+        let db = null;
+        let tokenHelper = new TokenHelper();
+        try{
+           con= await dbconnect();
+           await con.connect();
+           db = await con.db("ekalydb");
+           // Tester l'authentification de l'utilisateur effectuant la requête
+           
+            var result = await this.get_all_poste_with_connexion(db);
+
+            
+            return result
+           
+       }catch(err){
+           console.log(err);
+          throw err;
+       } finally {
+        //   if(con!=null) con.close();
+       }
+     }
+
+     async get_utilisateur_with_connexion(db) {
         var query = data;
         var result = await  db.collection("Utilisateur").findOne(query);
         
+        return result;
+     }
+
+     async get_all_poste_with_connexion(db) {
+        var result = await  db.collection("poste").find({}).toArray();
         return result;
      }
 

@@ -18,7 +18,7 @@ export class SigninComponent implements OnInit {
   nom_utilisateur : string="" ;
   prenom_utilisateur : string="";
   adresse_email:string="";
-  poste_utilisateur:string = "";
+  poste_utilisateur:any;
   prestataire_utilisateur:string ="";
   pseudo_utilisateur : string="";
   mot_de_passe : string="";
@@ -28,8 +28,8 @@ export class SigninComponent implements OnInit {
   constructor(private utilisateurService: UtilisateurService , private componentService : ComponentService) { }
 
   ngOnInit(): void {
-    // this.avoir_tout_les_poste();
-    this.componentService.hide_loader();
+    this.componentService.show_loader();
+    this.avoir_tout_les_poste();
   }
 
   gerer_erreur_utilisateur() {
@@ -44,6 +44,7 @@ export class SigninComponent implements OnInit {
         this.utilisateur.confirmation_mot_de_passe = this.confirmation_mot_de_passe;
         return true;
     } catch(err : any) {
+      console.log(err);
       this.utilisateur.setError(err);
       this.utilisateur.setError_signin(err);
       document.getElementById(err.idChamp)
@@ -59,7 +60,7 @@ export class SigninComponent implements OnInit {
           case 200 :  {
             this.reinitialiser_champ();
             this.reinitialiser_erreur();
-            this.popup_service.showSuccess(data.data.message);
+            this.popup_service.showSuccess("Inscription effectuer avec succès");
             break;
           }
           case 500 : {
@@ -73,19 +74,25 @@ export class SigninComponent implements OnInit {
     
   }
 
-  // avoir_tout_les_poste() {
-  //   this.utilisateurService.getAllPoste().subscribe(async (data:any)=> {
-  //       switch (data.metadata.code) {
-  //         case 200 : {
-  //           this.tableau_de_poste = data.data;
-  //           break;
-  //         }
-  //         case 500 :{
-  //           break;
-  //         }
-  //       }
-  //   })
-  // }
+  avoir_tout_les_poste() {
+    this.utilisateurService.getAllPoste().subscribe(async (data:any)=> {
+        switch (data.metadata.code) {
+          case 200 : {
+            console.log(data.data);
+            this.tableau_de_poste = data.data;
+            this.componentService.hide_loader();
+            break;
+          }
+          case 500 :{
+            break;
+          }
+        }
+    })
+  }
+
+  change(data) {
+    this.poste_utilisateur = data;
+  }
 
   verifierChamp(event : any) {
     let id : string = event.target.id;

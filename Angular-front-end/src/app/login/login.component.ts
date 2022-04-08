@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ComponentService } from '../service/component.service';
 import { PopupService } from '../service/popup.service';
 import { UtilisateurService } from '../service/utilisateur.service';
@@ -14,7 +15,7 @@ import * as $ from 'jquery';
 export class LoginComponent implements OnInit {
   utilisateur : any = {}
   image_login = image.image_login;
-  constructor(private componentService : ComponentService , private utilisateurService : UtilisateurService , private popupService:PopupService) { }
+  constructor(private componentService : ComponentService , private utilisateurService : UtilisateurService , private popupService:PopupService, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
     await this.initLogin();
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
        switch(data.metadata.code) {
          case 200 : {
            console.log(data);
+           this.router.navigate(['/signin']);
            this.popupService.showSuccess('Connected');
            break;
          }
