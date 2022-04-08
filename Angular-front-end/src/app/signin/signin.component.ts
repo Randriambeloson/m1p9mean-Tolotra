@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ComponentService } from '../service/component.service';
-import { PopupService } from '../service/popup.service';
 import { UtilisateurService } from '../service/utilisateur.service';
+import { Utilisateur } from '../model/utilisateur/utilisateur';
+import { image } from '../../environments/environment';
+import {PopupService} from '../service/popup.service';
+import { ComponentService } from '../service/component.service';
 
 @Component({
   selector: 'app-signin',
@@ -9,28 +11,132 @@ import { UtilisateurService } from '../service/utilisateur.service';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
-  utilisateur : any = {};
-  constructor(private componentService : ComponentService, private utilisateurService : UtilisateurService, private popupService : PopupService) { }
+  logo_proprietaire = image.logo_proprietaire;
+  image_login = image.image_login;
+  utilisateur : any = new Utilisateur();
+  popup_service = new PopupService();
+  nom_utilisateur : string="" ;
+  prenom_utilisateur : string="";
+  adresse_email:string="";
+  poste_utilisateur:string = "";
+  prestataire_utilisateur:string ="";
+  pseudo_utilisateur : string="";
+  mot_de_passe : string="";
+  confirmation_mot_de_passe : string="" ;
+
+  tableau_de_poste : any = [];
+  constructor(private utilisateurService: UtilisateurService , private componentService : ComponentService) { }
 
   ngOnInit(): void {
-    setTimeout(()=> {this.componentService.hide_loader()}, 1000)
+    // this.avoir_tout_les_poste();
+    this.componentService.hide_loader();
   }
 
-  async signin() {
-    console.log(this.utilisateur);
-    this.utilisateurService.signin(this.utilisateur).subscribe(async (data : any) => {
-      switch(data.metadata.code) {
-        case 200 : {
-          this.popupService.showSuccess('Inscription effectuer avec success');
-          break;
-        }
-        case 500 : {
-          this.popupService.showError(data.errorMessage);
-          break;
-        }
-      }
-    } , (err) => {
-      console.log(err);
-    })
+  gerer_erreur_utilisateur() {
+    try {
+        this.reinitialiser_erreur();
+        this.utilisateur.nom_utilisateur = this.nom_utilisateur;
+        this.utilisateur.prenom_utilisateur = this.prenom_utilisateur;
+        this.utilisateur.adresse_email = this.adresse_email;
+        this.utilisateur.poste_utilisateur = this.poste_utilisateur;
+        this.utilisateur.pseudo_utilisateur = this.pseudo_utilisateur;
+        this.utilisateur.mot_de_passe = this.mot_de_passe;
+        this.utilisateur.confirmation_mot_de_passe = this.confirmation_mot_de_passe;
+        return true;
+    } catch(err : any) {
+      this.utilisateur.setError(err);
+      this.utilisateur.setError_signin(err);
+      document.getElementById(err.idChamp)
+      return false;
+    }
+
   }
+  s_inscrire() {
+    console.log(this.gerer_erreur_utilisateur());
+    if(this.gerer_erreur_utilisateur()) {
+      this.utilisateurService.signin(this.utilisateur).subscribe((data:any)=> {
+        switch(data.metadata.code) {
+          case 200 :  {
+            this.reinitialiser_champ();
+            this.reinitialiser_erreur();
+            this.popup_service.showSuccess(data.data.message);
+            break;
+          }
+          case 500 : {
+            this.popup_service.showError(data.errorMessage);
+            break;
+          }
+        }
+        
+      });
+    }
+    
+  }
+
+  // avoir_tout_les_poste() {
+  //   this.utilisateurService.getAllPoste().subscribe(async (data:any)=> {
+  //       switch (data.metadata.code) {
+  //         case 200 : {
+  //           this.tableau_de_poste = data.data;
+  //           break;
+  //         }
+  //         case 500 :{
+  //           break;
+  //         }
+  //       }
+  //   })
+  // }
+
+  verifierChamp(event : any) {
+    let id : string = event.target.id;
+    try{
+      this.utilisateur[id] = event.target.value;
+      this.utilisateur.removeError(id);
+      this.utilisateur.removeError_signin(id);
+    }
+    catch(err) {
+      this.utilisateur.setError(err);
+      this.utilisateur.setError_signin(err);
+    }
+  }
+
+  reinitialiser_erreur() {
+      this.utilisateur.removeError("nom_utilisateur");
+      this.utilisateur.removeError_signin("nom_utilisateur");
+
+      this.utilisateur.removeError("prenom_utilisateur");
+      this.utilisateur.removeError_signin("prenom_utilisateur");
+
+      this.utilisateur.removeError("adresse_email");
+      this.utilisateur.removeError_signin("adresse_email");
+
+      this.utilisateur.removeError("poste_utilisateur");
+      this.utilisateur.removeError_signin("poste_utilisateur");
+
+      this.utilisateur.removeError("prestataire_utilisateur");
+      this.utilisateur.removeError_signin("prestataire_utilisateur");
+
+      this.utilisateur.removeError("pseudo_utilisateur");
+      this.utilisateur.removeError_signin("pseudo_utilisateur");
+
+      this.utilisateur.removeError("mot_de_passe");
+      this.utilisateur.removeError_signin("mot_de_passe");
+
+      this.utilisateur.removeError("confirmation_mot_de_passe");
+      this.utilisateur.removeError_signin("confirmation_mot_de_passe");
+
+  }
+
+  reinitialiser_champ() {
+    this.nom_utilisateur ="" ;
+    this.prenom_utilisateur ="";
+    this.adresse_email ="";
+    this.poste_utilisateur = "";
+    this.prestataire_utilisateur ="";
+    this.pseudo_utilisateur ="";
+    this.mot_de_passe  ="";
+    this.confirmation_mot_de_passe="" ;
+
+  }
+
 }

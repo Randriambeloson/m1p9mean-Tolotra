@@ -67,8 +67,15 @@ const UtilisateurController = function(app){
         let authorization = req.headers ["authorization"];
         let utilisateur = new UtilisateurModel();
         try{
+            console.log(req.body.identifiant);
+            if(req.body.identifiant == "undefined" || req.body.identifiant == undefined || req.body.identifiant == "" || req.body.identifiant == undefined || req.body.mdp == "undefined" || req.body.mdp == "") throw new Error("Parametre invalide")
+            let data = {
+                identifiant : req.body.identifiant,
+                mdp : req.body.mdp
+            }
+            console.log(data);
             response ["metadata"] = requestMetadata.requestMetadata.successMetadata;
-            response ["data"] = await utilisateur.get_utilisateur();
+            response ["data"] = await utilisateur.get_utilisateur(data);
         }
         catch(e){
             response ["metadata"] = requestMetadata.requestMetadata.errorMetadata;

@@ -15,6 +15,11 @@ export const environment = {
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
 
+export const image= {
+  logo_proprietaire : "assets/images/logo_proprietaire.png",
+  image_login : "assets/images/image-login.png",
+  image_signin : "assets/images/image-signin.png"
+};
 
 export const url = {
   base_url : 'http://localhost:3000',

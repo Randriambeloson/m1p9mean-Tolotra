@@ -1,6 +1,7 @@
 'use strict';
 
 const { dbconnect } = require('../services/DBConnection.service');
+const TokenHelper = require('../services/TokenHelper');
 
 module.exports = class UtilisateurModel{
 
@@ -51,6 +52,45 @@ module.exports = class UtilisateurModel{
         
         return result;
      }
+
+     async get_utilisateur(data) {
+        let con = null;
+        let db = null;
+        let tokenHelper = new TokenHelper();
+        try{
+           con= await dbconnect();
+           await con.connect();
+           db = await con.db("ekalydb");
+           // Tester l'authentification de l'utilisateur effectuant la requête
+           
+            var result = await this.get_utilisateur_with_connexion(db , data);
+            if(result == null || result.length==0) {
+                throw new Error("Mot de passe ou identifiant incorrecte");
+            }
+
+            let user = result;
+            let token = await tokenHelper.insertToken(db, user);
+            return {
+                token : token,
+                user : user   
+            };
+           
+       }catch(err){
+           console.log(err);
+          throw err;
+       } finally {
+        //   if(con!=null) con.close();
+       }
+     }
+
+     async get_utilisateur_with_connexion(db, data) {
+        var query = data;
+        var result = await  db.collection("Utilisateur").findOne(query);
+        
+        return result;
+     }
+
+     
 
      async delete_utilisateur_by_id(id) {
         let con = null;

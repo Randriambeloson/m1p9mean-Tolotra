@@ -1,13 +1,95 @@
-<label>nom</label>
-<input name="nom" id="nom" [(ngModel)] = "utilisateur.nom">
-
+<!-- <label> nom </label>
+<input type="text" name="nom_utilisateur" id="nom_utilisateur" [(ngModel)]="utilisateur.nom_utilisateur">
 <label>prenom</label>
-<input name="prenom" id="prenom" [(ngModel)] = "utilisateur.prenom">
+<input type="text" name="nom_utilisateur" id="prenom_utilisateur" [(ngModel)]="utilisateur.prenom_utilisateur">
+<label>adresse email</label>
+<input type="text" name="adresse_email" id="adresse_email" [(ngModel)]="utilisateur.adresse_email">
+<label>Poste</label>
+<input type="text" name="poste_utilisateur" id="poste_utilisateur" [(ngModel)]="utilisateur.poste_utilisateur">
+<label>Prestataire</label>
+<input type="text" name="poste_utilisateur" id="poste_utilisateur" [(ngModel)]="utilisateur.prestataire_utilisateur">
+<label> Identifiant </label>
+<input type="text" name="pseudo_utilisateur" id="pseudo_utilisateur" [(ngModel)]="utilisateur.pseudo_utilisateur">
+<label>mot de passe</label>
+<input type="password" name="mot_de_passe_" id="mot_de_passe_" [(ngModel)]="utilisateur.mot_de_passe_signin">
+<label>confirmation mot de passe</label>
+<input type="password" name="confirmation_mot_de_passe" id="confirmation_mot_de_passe" [(ngModel)]="utilisateur.confirmation_mot_de_passe">
 
-<label>identifiant</label>
-<input name="identifiant" id="identifiant" [(ngModel)] = "utilisateur.identifiant">
+<button class="btn btn-dark" (click)="s_inscrire()"> s'inscrire</button>
+ -->
 
-<label>mdp</label>
-<input name="mdp" id="mdp" [(ngModel)] = "utilisateur.mdp">
+<body>
 
-<button class="btn btn-dark" (click)="signin()"> S'inscrire</button>
+    <div class="main">
+
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Inscription</h2>
+                        <h5 class="form-title">Information personnelle</h5>
+                        <form method="POST" class="register-form" id="register-form">
+                            <div class="form-group">
+                                <label for="nom_utilisateur"><i class="fa fa-user-circle"></i></label>
+                                <input type="text" name="nom_utilisateur" id="nom_utilisateur" [(ngModel)]="nom_utilisateur" (blur)="verifierChamp($event)"  placeholder="Votre nom"/>
+                                <a id="erreur_nom_utilisateur" class="erreur-signin">  </a>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="name"><i class="fa fa-user-o"></i></label>
+                                <input type="text" name="prenom_utilisateur" id="prenom_utilisateur" [(ngModel)]="prenom_utilisateur" (blur)="verifierChamp($event)" placeholder="Votre prenom"/>
+                                <a id="erreur_prenom_utilisateur" class="erreur-signin">  </a>
+                            </div>
+                            <div class="form-group">
+                                <label for="adresse_email"><i class="fa fa-envelope"></i></label>
+                                <input type="email" name="adresse_email" id="adresse_email" [(ngModel)]="adresse_email" (blur)="verifierChamp($event)" placeholder="adresse email"/>
+                                <a id="erreur_adresse_email" class="erreur-signin">  </a>
+                            </div>
+                            <div class="form-group">
+                                <label for="poste_utilisateur"><i class="fa fa-wrench"></i></label>
+                                <select name="poste_utilisateur" id="poste_utilisateur" [(ngModel)]="poste_utilisateur" (blur)="verifierChamp($event)" class="form-control styled-select" placeholder="choisissez un poste">
+                                    <option value="" selected>choisissez un poste</option>
+                                    <option *ngFor="let data of tableau_de_poste" [value] ="data.id_poste"> {{data.nom_poste}}</option>
+                                    <option value ="Livreur"> Livreur</option>
+
+                                </select>
+                                <a id="erreur_poste_utilisateur" class="erreur-signin">  </a>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="S'inscrire" (click)="s_inscrire()"/>
+                            </div>
+                            
+                        </form>
+                    </div>
+                    
+                    <div class="signup-image">
+                        <figure><img src="{{image_login}}" alt="sing up image"></figure>
+                        <h5 class="form-title">Information identification</h5>
+                        <div class="form-group">
+                            <label for="pseudo_utilisateur"><i class="fa fa-address-card"></i></label>
+                            <input type="text" name="pseudo_utilisateur" id="pseudo_utilisateur" [(ngModel)]="pseudo_utilisateur" (blur)="verifierChamp($event)" placeholder="Entrer un identifiant"/>
+                            <a id="erreur_pseudo_utilisateur" class="erreur-signin">  </a>
+                        </div>
+                        <div class="form-group">
+                            <label for="mot_de_passe_signin"><i class="fa fa-unlock-alt"></i></label>
+                            <input type="password" name="mot_de_passe_signin" id="mot_de_passe_signin" [(ngModel)]="mot_de_passe" (blur)="verifierChamp($event)" placeholder="Mot de passe"/>
+                            <a id="erreur_mot_de_passe_signin" class="erreur-signin">  </a>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmation_mot_de_passe"><i class="fa fa-key"></i></label>
+                            <input type="password" name="confirmation_mot_de_passe" id="confirmation_mot_de_passe" [(ngModel)]="confirmation_mot_de_passe" (blur)="verifierChamp($event)" placeholder="confirmation mot de passe"/>
+                            <a id="erreur_confirmation_mot_de_passe" class="erreur-signin">  </a>
+                        </div>
+                        <a [routerLink]="['/']" class="signup-image-link">Deja Membre? connectez-vous <a class="text-danger">ici</a></a>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    
+
+</body>

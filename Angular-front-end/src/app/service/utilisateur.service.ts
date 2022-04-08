@@ -13,32 +13,24 @@ export class UtilisateurService extends RequestService {
     super();
    }
 
-  login(user:any) {
-    let options : any = this.getOptions();
-    let body = new FormData();
-    user = JSON.stringify(user);
-    body.append("user", user);
-
-    const params = new HttpParams({
-      fromObject: {
-        grant_type: 'password',
-        prenom: 'noom',
-        nom: "password",
-        scope: 'if no scope just delete this line',
-      }
-    });
+  login(utilisateur:any) {
+  let options : any = this.getOptions();
     
-    return this.httpClient.post(this.baseUrl + "/login", body, options);
+    const body = new HttpParams()
+    .set('identifiant', utilisateur.identifiant)
+    .set('mdp', utilisateur.mdp);
+    console.log(utilisateur);
+    return this.httpClient.post(this.baseUrl + "/login", body.toString(), options);
   }
 
   signin(utilisateur : any) {
     let options : any = this.getOptions();
-    console.log(options);
+    console.log(utilisateur);
     const body = new HttpParams()
-    .set('nom', utilisateur.nom)
-    .set('prenom', utilisateur.prenom)
-    .set('identifiant', utilisateur.identifiant)
-    .set('mdp', utilisateur.mdp);
+    .set('nom', utilisateur._nom_utilisateur)
+    .set('prenom', utilisateur._prenom_utilisateur)
+    .set('identifiant', utilisateur._pseudo_utilisateur)
+    .set('mdp', utilisateur._mot_de_passe);
     return this.httpClient.post(this.baseUrl + "/insert_utilisateur", body.toString(),options);
   }
   
@@ -46,6 +38,6 @@ export class UtilisateurService extends RequestService {
   getAllUser() {
     let options : any = this.getOptions();
     let body = new FormData();
-    return this.httpClient.post(this.baseUrl+"/get_all_utilisateur" ,  body, options);
+    return this.httpClient.post(this.baseUrl+"/get_all_utllisateur" ,  body, options);
   }
 }
