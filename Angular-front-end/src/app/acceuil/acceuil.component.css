@@ -1,75 +1,126 @@
-.tm-welcome-section {
-    background: #282726;
-    text-align: center;
+.tm-popular-item {
+    background: url(/assets/images/popular-item-bg.png) no-repeat;
+    background-size: 100% 100%;
+    max-width: 294px;
+    margin-top: 30px;  
+    margin-bottom: 80px;
   }
-  .white-text { color: white; }
-  .blue-text { color: #0066CC; }
-  .gold-text { color: #c79c60; }
-  .gray-text { color: #949494; }
-  .green-text { color: #30A430; }
-  .tm-welcome-header { font-size: 56px; }
-  .tm-welcome-header-2 {
-    font-family: 'Times New Roman', serif;
-    font-size: 62px;
-    text-transform: uppercase;
-  }
-  .tm-welcome-content {
-    margin: 25% auto 25%;
-    max-width: 650px;
-    justify-content: center;
-    margin-top: 0;
-    margin-bottom: 0;
-    max-height: 21vh;
-  }
-  .tm-welcome-description { text-align: justify; }
-  .tm-welcome-img-container { text-align: right; }
-  .tm-more-button-welcome { margin: 40px auto; }
-  .tm-more-button { 
-    position: absolute; 
-    display: -webkit-box;  
-    display: -webkit-flex;  
-    display: -ms-flexbox;  
-    display: flex;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    background-image: url(/assets/images/tm-brown-button.png);
-    width: 196px;
-    height: 46px;  
-    text-transform: uppercase;
-    font-size: 16px;
-    color: #c79c60;
-    -webkit-transition: all 0.3s ease;
-            transition: all 0.3s ease;
-    margin-top:250px;
-  }
-  .tm-more-button:hover,
-  .tm-more-button:focus {
-    color: white;
-    text-decoration: none;
-  }
-  .tm-position-relative { position: relative; }
-  .tm-table-set {
-    bottom: -100px;
-    left: 0;
-  }
-  .tm-lights-container {
-    /* position: absolute;
-    top: 0;
-    left: 0; */
+  .tm-popular-item-img { margin-left: 3px; }
+  .tm-popular-items-container {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
     -webkit-box-pack: justify;
     -webkit-justify-content: space-between;
         -ms-flex-pack: justify;
             justify-content: space-between;
-    width: 100%;
-    max-height: 25vh
+    margin-bottom: 40px;
   }
+  .tm-popular-items-container:last-child { margin-top: 15px; }
+  .tm-popular-item-description {
+    padding: 0 30px 60px;
+    position: relative;
+    text-align: center;
+  }
+  .tm-popular-item-title,
+  .order-now-link {
+    color: rgb(174,174,174);
+    -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+  }
+  .order-now-link {
+    font-size: 24px;
+    border: 2px solid rgb(174,174,174);
+    border-radius: 50%;
+    width: 85px;
+    height: 85px;
+    padding-top: 8px;
+    -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+  }
+  .tm-popular-item:hover { background-image: url(/assets/images/popular-item-bg-hover.png); }
+  .tm-popular-item:hover .tm-popular-item-title { color: #c79c60; }
+  .tm-popular-item:hover hr {
+    border-color: #c79c60;
+    -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+  }
+  .tm-popular-item:hover .order-now-link {
+    border-color: #c79c60;
+    color: #c79c60;
+    text-decoration: none;
+  }
+  .tm-popular-item-title {
+    font-size: 34px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .tm-popular-item-hr {
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+  .bigger-first-letter { font-size: 60px; }
+  .order-now-container {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(82, 76, 76);
+    border-radius: 50%;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    color: white;
+    position: absolute;
+    left: 92px;
+    bottom: -50px;
+  }
+
+  .tm-section-header-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: end;
+    -webkit-align-items: flex-end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+  }
+  /*http://stackoverflow.com/questions/1032914/how-to-make-a-div-to-fill-a-remaining-horizontal-space-a-very-simple-but-annoyi*/
+  .tm-section-header { width: 350px; }
+  .tm-hr-container {
+    width: 100%;
+    height: 41px;
+  }
+
+  .tm-header-line { width: 44px; }
+  .tm-main-section { padding-top: 130px; }
+  .tm-section-header-container { 
+    -webkit-box-align: start; 
+    -webkit-align-items: flex-start; 
+        -ms-flex-align: start; 
+            align-items: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column; 
+  }
+
+  
+.tm-section { margin-bottom: 60px; }
+.tm-section-margin-bottom-0 { margin-bottom: 0; } 
+
+  

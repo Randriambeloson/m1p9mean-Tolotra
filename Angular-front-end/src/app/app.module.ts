@@ -11,6 +11,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { SigninComponent } from './signin/signin.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { HeaderComponent } from './header/header.component';
+import { CardMenuComponent } from './card-menu/card-menu.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HeaderComponent } from './header/header.component';
     LoaderComponent,
     SigninComponent,
     AcceuilComponent,
-    HeaderComponent
+    HeaderComponent,
+    CardMenuComponent
   ],
   imports: [
     BrowserModule,
