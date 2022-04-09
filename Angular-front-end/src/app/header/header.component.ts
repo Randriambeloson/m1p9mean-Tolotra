@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ComponentService } from '../service/component.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     document.getElementById("text-banniere").innerHTML=this.text_banniere;
     document.getElementById("text-welcome").innerHTML = this.text_welcome
+    $('.mobile-menu-icon').click(function(){
+      $('.tm-nav').slideToggle();
+    });
   }
 
 }

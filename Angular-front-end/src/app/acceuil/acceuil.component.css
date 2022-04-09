@@ -1,10 +1,20 @@
-.tm-popular-item {
-    background: url(/assets/images/popular-item-bg.png) no-repeat;
-    background-size: 100% 100%;
-    max-width: 294px;
-    margin-top: 30px;  
-    margin-bottom: 80px;
-  }
+.white-text { color: white; }
+.blue-text { color: #0066CC; }
+.gold-text { color: #c79c60; }
+.gray-text { color: #949494; }
+.green-text { color: #30A430; }
+
+/* Main content */
+.light-gray-bg { background-color: #e4e4e4; }
+.tm-main-section { padding-top: 170px; }
+.img-thumbnail { padding: 8px; }
+.inline-block { display: inline-block; }
+.shadow-img {
+  background: url(/assets/images/shadow.png) no-repeat center bottom;
+  padding-bottom: 7px;
+}
+.margin-top-30 { margin-top: 30px; }
+
   .tm-popular-item-img { margin-left: 3px; }
   .tm-popular-items-container {
     display: -webkit-box;
@@ -20,49 +30,67 @@
             justify-content: space-between;
     margin-bottom: 40px;
   }
-  .tm-popular-items-container:last-child { margin-top: 15px; }
-  .tm-popular-item-description {
-    padding: 0 30px 60px;
+  
+.tm-daily-menu-container { overflow: hidden; }
+/* Menu */
+.tm-side-menu {
+    color: white;
+    width: 242px;
+    padding-top: 7px;
     position: relative;
+    z-index: 1;
     text-align: center;
+    text-transform: uppercase;  
   }
-  .tm-popular-item-title,
-  .order-now-link {
-    color: rgb(174,174,174);
+  .tm-side-menu-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .tm-side-menu li { list-style: none; }
+  .tm-side-menu li a {
+    color: #7c6a51;
+    padding: 7px;
+    display: block;
     -webkit-transition: all 0.3s ease;
             transition: all 0.3s ease;
   }
-  .order-now-link {
-    font-size: 24px;
-    border: 2px solid rgb(174,174,174);
-    border-radius: 50%;
-    width: 85px;
-    height: 85px;
-    padding-top: 8px;
-    -webkit-transition: all 0.3s ease;
-            transition: all 0.3s ease;
-  }
-  .tm-popular-item:hover { background-image: url(/assets/images/popular-item-bg-hover.png); }
-  .tm-popular-item:hover .tm-popular-item-title { color: #c79c60; }
-  .tm-popular-item:hover hr {
-    border-color: #c79c60;
-    -webkit-transition: all 0.3s ease;
-            transition: all 0.3s ease;
-  }
-  .tm-popular-item:hover .order-now-link {
-    border-color: #c79c60;
+  .tm-side-menu li a:hover,
+  .tm-side-menu li a.active {
     color: #c79c60;
     text-decoration: none;
   }
-  .tm-popular-item-title {
-    font-size: 34px;
-    margin-top: 0;
-    margin-bottom: 0;
+
+  .tm-more-button-welcome { margin: 40px auto; }
+  .tm-more-button { 
+    position: absolute; 
+    display: -webkit-box;  
+    display: -webkit-flex;  
+    display: -ms-flexbox;  
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background-image: url(/assets/images/tm-brown-button.png);
+    width: 196px;
+    height: 46px;  
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #c79c60;
+    -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
   }
-  .tm-popular-item-hr {
-    margin-top: 0;
-    margin-bottom: 15px;
+  .tm-more-button:hover,
+  .tm-more-button:focus {
+    color: white;
+    text-decoration: none;
   }
+
   .bigger-first-letter { font-size: 60px; }
   .order-now-container {
     width: 100px;
@@ -103,6 +131,7 @@
   .tm-hr-container {
     width: 100%;
     height: 41px;
+    margin-top: 1.5%;
   }
 
   .tm-header-line { width: 44px; }
@@ -113,14 +142,22 @@
         -ms-flex-align: start; 
             align-items: flex-start;
     -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column; 
+    
   }
 
   
 .tm-section { margin-bottom: 60px; }
 .tm-section-margin-bottom-0 { margin-bottom: 0; } 
+
+.container { max-width: 960px; }
+.tm-handwriting-font { font-family: 'Damion', cursive; }
+.tm-top-header {
+  background: black;
+  color: white;
+}
+
+img {
+    vertical-align: unset !important;
+}
 
   

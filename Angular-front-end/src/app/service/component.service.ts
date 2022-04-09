@@ -31,6 +31,7 @@ export class ComponentService {
 
   async show_or_hide_header(boolean : boolean) {
     document.getElementById("header").hidden = !boolean;
+    document.getElementById("footer").hidden = !boolean;
   }
 
   async redirect_si_non_authentifier() {

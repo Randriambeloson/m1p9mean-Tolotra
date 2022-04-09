@@ -17,8 +17,9 @@ export class AcceuilComponent implements OnInit {
 
   init() {
     this.init_banniere();
+    this.componentService.show_header();
     this.componentService.show_loader();
-    this.componentService.redirect_si_non_authentifier();
+    // this.componentService.redirect_si_non_authentifier();
     setTimeout(()=> {this.componentService.hide_loader()},2000);   
   }
   init_banniere() {

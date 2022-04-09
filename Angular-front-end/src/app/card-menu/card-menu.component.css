@@ -1,0 +1,92 @@
+.tm-popular-item {
+    background: url(/assets/images/popular-item-bg.png) no-repeat;
+    background-size: 100% 100%;
+    max-width: 294px;
+    margin-top: 30px;  
+    margin-bottom: 80px;
+  }
+  .tm-popular-item-img { margin-left: 3px; }
+  .tm-popular-items-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  .tm-popular-items-container:last-child { margin-top: 15px; }
+  .tm-popular-item-description {
+    padding: 0 30px 60px;
+    position: relative;
+    text-align: center;
+  }
+  .tm-popular-item-title,
+  .order-now-link {
+    color: rgb(174,174,174);
+    -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+  }
+  .order-now-link {
+    font-size: 24px;
+    border: 2px solid rgb(174,174,174);
+    border-radius: 50%;
+    width: 85px;
+    height: 85px;
+    padding-top: 8px;
+    -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+  }
+  .order-now-container {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(82, 76, 76);
+    border-radius: 50%;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    color: white;
+    position: absolute;
+    left: 92px;
+    bottom: -50px;
+  }
+
+  .tm-handwriting-font { font-family: 'Damion', cursive; }
+  .bigger-first-letter { font-size: 60px; }
+
+  .tm-popular-item:hover { background-image: url(/assets/images/popular-item-bg-hover.png); }
+  .tm-popular-item:hover .tm-popular-item-title { color: #c79c60; }
+  .tm-popular-item:hover hr {
+    border-color: #c79c60;
+    -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+  }
+  .tm-popular-item:hover .order-now-link {
+    border-color: #c79c60;
+    color: #c79c60;
+    text-decoration: none;
+  }
+  .tm-popular-item-title {
+    font-size: 34px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .tm-popular-item-hr {
+    margin-top: 0;
+    margin-bottom: 15px;
+  }

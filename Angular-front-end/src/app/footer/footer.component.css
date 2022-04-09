@@ -1,0 +1,44 @@
+.tm-black-bg {
+    background-color: #302f2f;
+    color: white;
+    padding-top: 50px;
+  }
+  .tm-footer-div-title {
+    color: white;
+    font-size: 21px;
+    font-weight: 700;
+  }
+  .tm-footer-nav {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .tm-footer-nav ul { list-style: none; }
+  .tm-footer-nav li { padding: 15px 0 0 0; }
+  .tm-footer-nav li a { color: white; }
+  .tm-footer-nav li a:hover {
+    color: #c79c60;
+    text-decoration: none;
+  }
+
+  .tm-social-icon {
+    background-color: #505050;
+    color: white;
+    display: inline-block;
+    font-size: 20px;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    width: 35px;
+    height: 35px;
+    border-radius: 2px;
+    text-align: center;
+    padding-top: 4px;
+    margin-right: 10px;
+  }
+  .tm-social-icon:last-child { margin-right: 0; }
+  .tm-social-icon:hover,
+  .tm-social-icon:focus {
+    background-color: #BB8232;
+    color: white;
+  }
+  .tm-social-icons-container { margin-top: 25px; }
+  

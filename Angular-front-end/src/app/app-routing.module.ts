@@ -7,7 +7,7 @@ import { AcceuilComponent } from './acceuil/acceuil.component';
 import { HeaderComponent } from './header/header.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: AcceuilComponent },
   { path: 'login', component: LoginComponent },
   { path: 'loader', component: LoaderComponent },
   { path: 'signin', component: SigninComponent },
