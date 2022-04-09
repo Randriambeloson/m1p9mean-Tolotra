@@ -19,6 +19,8 @@ export class UtilisateurService extends RequestService {
     const body = new HttpParams()
     .set('identifiant', utilisateur.identifiant)
     .set('mdp', utilisateur.mdp);
+
+    console.log(body.toString());
     return this.httpClient.post(this.baseUrl + "/login", body.toString(), options);
   }
 

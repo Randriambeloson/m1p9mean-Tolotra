@@ -5,6 +5,7 @@ import { PopupService } from '../service/popup.service';
 import { UtilisateurService } from '../service/utilisateur.service';
 import { image } from '../../environments/environment';
 import * as $ from 'jquery';
+import { ThrowStmt } from '@angular/compiler';
 
 
 @Component({
@@ -19,17 +20,25 @@ export class LoginComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     await this.initLogin();
-    setTimeout(()=> {this.componentService.hide_loader()} , 1000);
+    this.componentService.hide_loader();
     
   }
 
+  insertion_local_storage(token : any , default_page : any) {
+    localStorage.setItem("token" ,token);
+    localStorage.setItem("default_page" ,default_page);
+  }
+  
   async login() {
     this.showSpinner();
      return await this.utilisateurService.login(this.utilisateur).subscribe(async (data : any) => {
        switch(data.metadata.code) {
          case 200 : {
-           console.log(data);
-           this.router.navigate(['/signin']);
+           var poste = JSON.parse(data.data.user.poste);
+           await this.insertion_local_storage(data.data.token , poste.DefaultPage);
+           
+           this.router.navigate([poste.DefaultPage]);
+           this.componentService.show_header();
            this.popupService.showSuccess('Connected');
            break;
          }
@@ -37,11 +46,19 @@ export class LoginComponent implements OnInit {
            this.popupService.showError(data.errorMessage);
          }
        }
-       this.hideSpinner();
+       await this.hideSpinner();
         console.log(data);
       } , (err) => {
         console.log(err);
       })
+  }
+
+  redirection_si_authentifier() {
+    var default_page = localStorage.getItem("default_page");
+    if(localStorage.getItem("token")!=undefined && default_page!=undefined)  {
+        this.router.navigate([default_page]); 
+        // this.componentService.afficher_header();
+    }
   }
 
   showSpinner() {
@@ -56,6 +73,8 @@ export class LoginComponent implements OnInit {
 
 
   async initLogin() {
+    this.componentService.hide_header();
+    this.redirection_si_authentifier(); 
     $('.input100').each(function(){
         $(this).on('blur', function(){
             if($(this).val().trim() != "") {

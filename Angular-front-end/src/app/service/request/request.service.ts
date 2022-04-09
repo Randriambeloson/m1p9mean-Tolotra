@@ -35,7 +35,9 @@ export class RequestService {
       let header = new HttpHeaders({
       "authorization" :  `Bearer ${token}`,
       "Access-Control-Allow-Origin":"*",
+      'Content-Type': 'application/x-www-form-urlencoded'
       });
+      console.log(header);
       return header;
     }
     return new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')

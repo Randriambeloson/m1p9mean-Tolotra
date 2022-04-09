@@ -107,7 +107,7 @@ module.exports = class UtilisateurModel{
        }
      }
 
-     async get_utilisateur_with_connexion(db) {
+     async get_utilisateur_with_connexion(db , data) {
         var query = data;
         var result = await  db.collection("Utilisateur").findOne(query);
         

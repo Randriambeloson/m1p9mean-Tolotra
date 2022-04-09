@@ -29,6 +29,7 @@ export class SigninComponent implements OnInit {
 
   ngOnInit(): void {
     this.componentService.show_loader();
+    this.componentService.hide_header();
     this.avoir_tout_les_poste();
   }
 

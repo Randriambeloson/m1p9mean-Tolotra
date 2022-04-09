@@ -29,7 +29,7 @@ const UtilisateurController = function(app){
             let utilisateur = new UtilisateurModel();
         try{
             if(req.body.nom == "undefined" || req.body.nom == "" || req.body.prenom == "undefined" || req.body.prenom == ""  || req.body.identifiant == "undefined" || req.body.identifiant == "" || req.body.mdp == "undefined" || req.body.mdp == "") throw new Error("Parametre invalide")
-            let data = {
+            var data = {
                 nom : req.body.nom,
                 prenom : req.body.prenom,
                 mail : req.body.mail,
@@ -72,7 +72,7 @@ const UtilisateurController = function(app){
         let authorization = req.headers ["authorization"];
         let utilisateur = new UtilisateurModel();
         try{
-            console.log(req.body.identifiant);
+            console.log(req.body);
             if(req.body.identifiant == "undefined" || req.body.identifiant == undefined || req.body.identifiant == "" || req.body.identifiant == undefined || req.body.mdp == "undefined" || req.body.mdp == "") throw new Error("Parametre invalide")
             let data = {
                 identifiant : req.body.identifiant,
