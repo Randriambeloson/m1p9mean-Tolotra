@@ -5,6 +5,8 @@ import {LoaderComponent} from './loader/loader.component';
 import {SigninComponent} from './signin/signin.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { HeaderComponent } from './header/header.component';
+import { MenuComponent } from './menu/menu.component';
+import { ListeCommandeComponent } from './liste-commande/liste-commande.component';
 
 const routes: Routes = [
   { path: '', component: AcceuilComponent },
@@ -12,7 +14,10 @@ const routes: Routes = [
   { path: 'loader', component: LoaderComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'Acceuil', component: AcceuilComponent },
-  { path: 'header' , component: HeaderComponent }
+  { path: 'header' , component: HeaderComponent },
+  { path: 'menu' , component: MenuComponent },
+  { path: 'commande' , component: ListeCommandeComponent}
+
 ];
 
 @NgModule({

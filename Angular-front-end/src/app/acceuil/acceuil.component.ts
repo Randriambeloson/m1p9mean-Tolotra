@@ -23,7 +23,6 @@ export class AcceuilComponent implements OnInit {
     setTimeout(()=> {this.componentService.hide_loader()},2000);   
   }
   init_banniere() {
-    document.getElementById('text-banniere').innerHTML  = "Test text banniere ty oh; sa aona zala ah milay sa tsia Test text banniere ty oh; sa aona zala ah milay sa tsia Test text banniere ty oh; sa aona zala ah milay sa tsia Test text banniere ty oh; sa aona zala ah milay sa tsia"
     document.getElementById('text-welcome').innerHTML  = "Bienvenue"
   }
 

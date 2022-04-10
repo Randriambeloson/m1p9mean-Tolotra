@@ -107,6 +107,31 @@ module.exports = class UtilisateurModel{
        }
      }
 
+     async deconnexion(authorization) {
+         let con = null;
+         let db = null;
+         let tokenHelper = new TokenHelper();
+         try{
+            con= await dbconnect();
+            await con.connect();
+            db = await con.db("ekalydb");
+            // Tester l'authentification de l'utilisateur effectuant la requête
+            
+            let token = await tokenHelper.getTokenFromBearerToken(authorization);
+            var query = {token_utilisateur : token};
+            var result = await  db.collection("token_utilisateur").deleteOne(query);
+
+            
+            return result
+            
+      }catch(err){
+            console.log(err);
+         throw err;
+      } finally {
+         //   if(con!=null) con.close();
+      }
+     }
+
      async get_utilisateur_with_connexion(db , data) {
         var query = data;
         var result = await  db.collection("Utilisateur").findOne(query);

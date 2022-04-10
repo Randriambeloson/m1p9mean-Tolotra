@@ -40,4 +40,16 @@ export class ComponentService {
     }
   }
 
+  addClassActive(id) {
+    this.removeAllClasseActive();
+    document.getElementById(id).classList.add('active');
+  }
+
+  removeAllClasseActive() {
+    var allClassActive = document.getElementsByClassName("active");
+    for(var i=0; i<allClassActive.length ; i++) {
+      allClassActive[i].classList.remove("active");
+    }
+  }
+
 }

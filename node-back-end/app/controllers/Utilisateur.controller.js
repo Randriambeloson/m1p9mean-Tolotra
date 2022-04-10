@@ -123,6 +123,23 @@ const UtilisateurController = function(app){
         }
     });
     
+    app.get('/deconnexion',async function(req,res){
+        let response = {};
+        let authorization = req.headers ["authorization"];
+        let utilisateur = new UtilisateurModel();
+        try{
+            response ["metadata"] = requestMetadata.requestMetadata.successMetadata;
+            response ["data"] = await utilisateur.deconnexion(authorization);
+        }
+        catch(e){
+            response ["metadata"] = requestMetadata.requestMetadata.errorMetadata;
+            response ["errorMessage"] = e.message;
+        }finally{
+            res.send(JSON.stringify(response));
+        }
+    });
+    
+    
 
 
 }

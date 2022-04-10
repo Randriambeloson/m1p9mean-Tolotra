@@ -13,6 +13,9 @@ import { AcceuilComponent } from './acceuil/acceuil.component';
 import { HeaderComponent } from './header/header.component';
 import { CardMenuComponent } from './card-menu/card-menu.component';
 import { FooterComponent } from './footer/footer.component';
+import { MenuComponent } from './menu/menu.component';
+import { CardPlatComponent } from './card-plat/card-plat.component';
+import { ListeCommandeComponent } from './liste-commande/liste-commande.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { FooterComponent } from './footer/footer.component';
     AcceuilComponent,
     HeaderComponent,
     CardMenuComponent,
-    FooterComponent
+    FooterComponent,
+    MenuComponent,
+    CardPlatComponent,
+    ListeCommandeComponent
   ],
   imports: [
     BrowserModule,

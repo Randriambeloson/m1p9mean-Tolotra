@@ -11,6 +11,7 @@ const {dbconnect} = require('./app/services/DBConnection.service')
 
 /* Initialisation des controllers */
 const UtilisateurController = require('./app/controllers/Utilisateur.controller');
+const RestaurantController = require('./app/controllers/Restaurant.controller');
 /* Fin initialisation*/ 
 
 
@@ -39,6 +40,7 @@ app.use('/', express.static(__dirname + '/'));
     /*  Mbola ho integrena */
 
 UtilisateurController(app);
+RestaurantController(app);
 
 /* Fin integration Controllers*/
 

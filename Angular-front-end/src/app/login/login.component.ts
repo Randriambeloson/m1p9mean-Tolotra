@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
            var poste = JSON.parse(data.data.user.poste);
            await this.insertion_local_storage(data.data.token , poste.DefaultPage);
            
-           this.router.navigate([poste.DefaultPage]);
+           this.router.navigateByUrl(poste.DefaultPage); 
            this.componentService.show_header();
            this.popupService.showSuccess('Connected');
            break;

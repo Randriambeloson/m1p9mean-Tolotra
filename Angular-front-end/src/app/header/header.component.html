@@ -11,10 +11,12 @@
             </div>
             <nav class="tm-nav">
               <ul>
-                <li><a href="index.html" class="active">Acceuil</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a [routerLink]="'/login'">login</a></li>
+                <li><a [routerLink]="'/Acceuil'" (click)="addClassActive($event)" class="active" id="acceuil">Acceuil</a></li>
+                <li><a [routerLink]="['/menu']" (click)="addClassActive($event)" id="menu">Menu</a></li>
+                <li ><a [routerLink]="'/login'" (click)="addClassActive($event)" id="contact">Contact</a></li>
+                <li *ngIf="isConnected"><a [routerLink]="'/commande'" (click)="addClassActive($event)" id="commande" >Mes Commandes</a></li>
+                <li *ngIf="isConnected"><a [routerLink]="router.url" (click)="deconnexion()" >Deconnexion</a></li>
+                <li *ngIf="!isConnected"><a [routerLink]="'/login'" id="login">login</a></li>
               </ul>
             </nav>   
           </div>           
@@ -35,9 +37,9 @@
             E - KALY
         </h2>
         <p class="gray-text tm-welcome-description" id="text-banniere">
-        
+          E-kaly est un site en ligne <span class="gold-text"> regroupant tout vos restaurant preferee</span>.Ce projet a été crée dans le cadre d un exament de Master l IT university.Projet de <span class="gold-text"> Tolotra Randriambeloson </span>. Ayant le nummero ETU <span class="gold-text"> 1026 </span>
         </p>
-        <a href="#main" class="tm-more-button tm-more-button-welcome">Details</a>      
+        <a (click)="allerVersElement('content')" [routerLink]="[router.url]" class="tm-more-button tm-more-button-welcome">Details</a>      
       </div>
       <img src="assets/images/table-set.png" alt="Table Set" class="tm-table-set img-responsive">             
     </div>      

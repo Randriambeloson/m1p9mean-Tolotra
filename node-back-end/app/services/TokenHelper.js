@@ -43,14 +43,13 @@ module.exports = class TokenHelper{
         await con.query(sql, [token]);
     }
     async getUserByToken(con, token){
-        let sql = "SELECT * FROM token_utilisateur join utilisateur on token_utilisateur.id_utilisateur=utilisateur.id_utilisateur "
-        +" WHERE token_utilisateur = $1::text and date_validation >= CURRENT_TIMESTAMP";
-        let queryResult = await con.query(sql , [token]);
-        let result = queryResult.rows;
-        if(result.length == 0){
-            throw new Error(this.errorMessage.utilisateur_introuvable);
-        }
-        return result [0];
+        console.log(token);
+        let query = {token_utilisateur : token};
+        let token_utilisateur = await con.collection('token_utilisateur').find(query).toArray();
+        let id_utilisateur = token_utilisateur[0].id_utilisateur;
+        let query_utlisateur = {_id : id_utilisateur};
+        let user = await con.collection('Utilisateur').find(query_utlisateur).toArray();
+        return user[0];
     }
     static generateToken(id){
         let date = new Date();

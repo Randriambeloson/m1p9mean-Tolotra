@@ -1,0 +1,26 @@
+<div class="tm-main-section light-gray-bg">
+    <div class="container" id="main">
+        <section class="tm-section row">
+            <div class="col-lg-12 tm-section-header-container margin-bottom-30">
+            <h2 class="tm-section-header gold-text tm-handwriting-font"><img src="/assets/images/favicon.ico" alt="Logo" class="tm-site-logo"> Menu</h2>
+            <div class="tm-hr-container"><hr class="tm-hr"></div>
+            </div>
+            <div class="row width-100">
+                <div class="col-lg-3 col-md-3">
+                    <h2 class="tm-section-header gold-text tm-handwriting-font"> Restaurant</h2>
+                    <div class="tm-position-relative margin-bottom-30">              
+                        <nav class="tm-side-menu">
+                            <ul>
+                            <li *ngFor="let data of restaurant_tab" (click)="get_all_plat_by_id_restaurant(data)"><a [routerLink]="[router.url]" class="active">{{data.nom_restaurant}}</a></li>
+                            </ul>              
+                        </nav>    
+                    <!-- <img src="assets/images/vertical-menu-g.png" alt="Menu bg" class="tm-side-menu-bg"> -->
+                    </div>  
+                </div>            
+                <div class="tm-menu-product-content col-lg-9 col-md-9" *ngIf="plat_tab"> <!-- menu content -->
+                    <app-card-plat *ngFor="let data of plat_tab" (click)="commanderPlat(data)" nom="{{data.nom_plat}}" details="{{data.details}}" prix = "{{data.prix}}" image="/assets/images/menu-1.jpg"></app-card-plat>
+                </div>
+            </div>          
+        </section>
+    </div>
+</div>

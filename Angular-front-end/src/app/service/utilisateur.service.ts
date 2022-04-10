@@ -49,4 +49,9 @@ export class UtilisateurService extends RequestService {
     let options : any = this.getOptions();
     return this.httpClient.get(this.baseUrl+"/get_all_poste" , options);
   }
+
+  deconnexion() {
+    let options : any = this.getOptions();
+    return this.httpClient.get(this.baseUrl+"/deconnexion" , options);
+  }
 }
