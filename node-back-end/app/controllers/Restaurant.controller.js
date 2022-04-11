@@ -68,6 +68,42 @@ const RestaurantController = function(app){
         }
     });
 
+    app.get('/get_all_restaurant_by_utilisateur',async function(req,res){
+        let response = {};
+        let authorization = req.headers ["authorization"];
+        let restaurant = new RestaurantModel();
+        try{
+            response ["metadata"] = requestMetadata.requestMetadata.successMetadata;
+            response ["data"] = await restaurant.get_all_restaurant_by_utilisateur(authorization);
+        }
+        catch(e){
+            response ["metadata"] = requestMetadata.requestMetadata.errorMetadata;
+            response ["errorMessage"] = e.message;
+        }finally{
+            res.send(JSON.stringify(response));
+        }
+    });
+
+    
+
+    app.post('/get_all_commande_en_cour_by_restaurant',async function(req,res){
+        let response = {};
+        let authorization = req.headers ["authorization"];
+        let restaurantM = new RestaurantModel();
+        let restaurant = req.body.restaurant ;
+        try{
+            response ["metadata"] = requestMetadata.requestMetadata.successMetadata;
+            response ["data"] = await restaurantM.get_all_commande_en_cour_by_restaurant(restaurant);
+        }
+        catch(e){
+            response ["metadata"] = requestMetadata.requestMetadata.errorMetadata;
+            response ["errorMessage"] = e.message;
+        }finally{
+            res.send(JSON.stringify(response));
+        }
+    });
+    
+
     
     app.post('/get_all_plat_by_id_restaurant',async function(req,res){
         let response = {};

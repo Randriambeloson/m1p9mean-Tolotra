@@ -50,11 +50,13 @@ export class HeaderComponent implements OnInit {
   }
 
   deconnexion() {
+    this.componentService.show_loader();
     this.utilisateurService.deconnexion().subscribe(async (data)=> {
       await localStorage.clear();
-      this.isConnectedFunction();
-      
+      await this.isConnectedFunction();
+      this.componentService.hide_loader();
     })
+
   }
  
 }

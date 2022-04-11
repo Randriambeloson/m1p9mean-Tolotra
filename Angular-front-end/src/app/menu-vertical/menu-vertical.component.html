@@ -1,0 +1,102 @@
+<nav>
+
+    <ul class="liste-nav">
+
+        <li class="items">
+            Profil
+        </li>
+
+        <li data-anim="1" class="items">
+            <img src="/assets/images/profil.svg" class="icones">
+            <p>Moi</p>
+        </li>
+        <li data-anim="2" class="items">
+            <img src="/assets/images/restaurant.svg" class="icones">
+            <p>Restaurant</p>
+        </li>
+        <li data-anim="3" class="items">
+            <img src="/assets/images/benefice.svg" class="icones">
+            <p>Benefice</p>
+        </li>
+        <li data-anim="4" class="items">
+            <img src="/assets/images/livraison.svg" class="icones">
+            <p>Livraison</p>
+        </li>
+    </ul>
+
+
+    <ul data-anim="1" class="sous-menu">
+
+        <li class="header-liste">Moi</li>
+        <li class="items-sous-menu" [routerLink]="'/login'">
+            <span>
+                <img src="/assets/images/information.svg">
+            </span>
+            <p>Information</p>
+        </li>
+        <li class="items-sous-menu">
+            <span>
+                <img src="/assets/images/security.svg">
+            </span>
+            <p>Securite</p>
+        </li>
+    </ul>
+
+
+    
+    <ul data-anim="2" class="sous-menu">
+
+        <li class="header-liste">Restaurant</li>
+        <li class="items-sous-menu" [routerLink]="'/profil/restaurant'">
+            <span>
+                <img src="/assets/images/commande.svg">
+            </span>
+            <p>Liste restaurant</p>
+        </li>
+        <li class="items-sous-menu">
+            <span>
+                <img src="/assets/images/commande.svg">
+            </span>
+            <p>Nouveau restaurant</p>
+        </li>
+        <li class="items-sous-menu">
+            <span>
+                <img src="/assets/images/commande.svg">
+            </span>
+            <p>Commande en cour</p>
+        </li>
+
+    </ul>
+
+
+    
+    <ul data-anim="3" class="sous-menu">
+
+        <li class="header-liste">Paiement</li>
+        <li class="items-sous-menu">
+            <span>
+                <img src="ressources/bell.svg">
+            </span>
+            <p>Carte bancaire</p>
+        </li>
+      
+
+    </ul>
+
+
+
+
+    
+    <ul data-anim="4" class="sous-menu">
+
+        <li class="header-liste">Livraison</li>
+        <li class="items-sous-menu">
+            <span>
+                <img src="/assets/images/livraison.svg">
+            </span>
+            <p>Liste de livraison</p>
+        </li>
+        
+    </ul>
+
+</nav>

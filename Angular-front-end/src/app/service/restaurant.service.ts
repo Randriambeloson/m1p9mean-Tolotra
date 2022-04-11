@@ -39,4 +39,15 @@ export class RestaurantService extends RequestService {
     return this.httpClient.get(this.baseUrl+"/get_all_commande_by_user" , options);
   }
 
+  getAllRestaurantByUtilisateur() {
+    let options : any = this.getOptions();
+    return this.httpClient.get(this.baseUrl+"/get_all_restaurant_by_utilisateur" , options);
+  }
+
+  getAllCommandeEnCourByRestaurant(id_restaurant) {
+    let options : any = this.getOptions();
+    const body = new HttpParams()
+    .set('restaurant', JSON.stringify(id_restaurant))
+    return this.httpClient.post(this.baseUrl+"/get_all_commande_en_cour_by_restaurant" , body , options);
+  }
 }

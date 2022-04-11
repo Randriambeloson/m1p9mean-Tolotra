@@ -18,10 +18,23 @@ export class ComponentService {
 
   async  hide_header() {
     await this.show_or_hide_header(false);
+    this.hide_banniere();
   }
 
   async show_header() {
     await this.show_or_hide_header(true);
+    this.show_banniere();
+  }
+
+  async hide_banniere() {
+    document.getElementById("banniere").hidden = true;
+  }
+  async show_banniere() {
+    document.getElementById("banniere").hidden = false;
+  }
+
+  async hide_footer() {
+    document.getElementById("footer").hidden = true;
   }
 
   async show_or_hide_loader(boolean : boolean) {

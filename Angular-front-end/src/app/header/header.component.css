@@ -3,12 +3,18 @@ ul {
   margin: 0; 
   padding: 0;
 }
+#banniere {
+  padding-top: 95px;
+}
 * { font-family: 'Open Sans', sans-serif; }
 .container { max-width: 100%; }
 .tm-handwriting-font { font-family: 'Damion', cursive; }
 .tm-top-header {
   background: black;
   color: white;
+  position: fixed; 
+  width:100%;
+  z-index: 1000;
 }
 .tm-site-logo {
     width: 15%;
@@ -74,6 +80,7 @@ ul {
           justify-content: space-between;  
     padding-top: 10px;
     padding-bottom: 10px;
+    z-index: 40;
 }
 .mobile-menu-icon { display: none; }
 .tm-section { margin-bottom: 60px; }

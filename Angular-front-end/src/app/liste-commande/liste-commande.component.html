@@ -1,1 +1,33 @@
-<p>liste-commande works!</p>
+<div class="tm-main-section light-gray-bg">
+    <div class="container" id="main">
+        <section class="tm-section row">
+            <div class="col-lg-12 tm-section-header-container margin-bottom-30">
+                <h2 class="tm-section-header gold-text tm-handwriting-font"><img src="/assets/images/favicon.ico" alt="Logo" class="tm-site-logo"> Commande</h2>
+                <div class="tm-hr-container"><hr class="tm-hr"></div>
+            </div>
+            <div class="commande">
+                <table class="table" *ngIf="commande_tab.length>0">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Nom Restaurant</th>
+                            <th>Nom plat</th>
+                            <th>Details</th>
+                            <th>prix</th>
+                            <th>Etat commande</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of commande_tab">
+                            <td>{{data.restaurant.nom_restaurant}}</td>
+                            <td>{{data.plat.nom_plat}}</td>
+                            <td>{{data.plat.details}}</td>
+                            <td>{{data.plat.prix}}</td>
+                            <td>{{data.etatCommande.nom_etat}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>
+            

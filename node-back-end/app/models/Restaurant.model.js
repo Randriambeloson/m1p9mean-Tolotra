@@ -54,6 +54,31 @@ module.exports = class RestaurantModel{
    
    }
 
+   async get_all_commande_en_cour_by_restaurant(restaurant) {
+      let con = null;
+      let db = null;
+      try{
+         restaurant = JSON.parse(restaurant);
+         con= await dbconnect();
+         await con.connect();
+         db = await con.db("ekalydb");
+         // Tester l'authentification de l'utilisateur effectuant la requête
+         
+         var result = await this.get_all_commande_en_cour_by_restaurant_with_connexion(db , restaurant);
+
+         return result;
+         
+   }catch(err){
+         console.log(err);
+      throw err;
+   } finally {
+      //   if(con!=null) con.close();
+   }
+
+}
+
+   
+
    async commanderPlat(authorization,plat,restaurant) {
         let con = null;
         let db = null;
@@ -67,7 +92,7 @@ module.exports = class RestaurantModel{
          let token = await tokenHelper.getTokenFromBearerToken(authorization);
          let user = await tokenHelper.getUserByToken(db, token);
          console.log(user);
-         let query = {plat : plat , restaurant : restaurant , utilisateur : user};
+         let query = {plat : plat , restaurant : restaurant , utilisateur : user , etatCommande : {id_etat : 0 , nom_etat : "Commander"}};
          return db.collection("Commande").insertOne(query);
            
        }catch(err){
@@ -101,6 +126,32 @@ module.exports = class RestaurantModel{
      }
    }
 
+   async get_all_restaurant_by_utilisateur(authorization) {
+      let con = null;
+      let db = null;
+      let tokenHelper = new TokenHelper();
+      try{
+       con= await dbconnect();
+       await con.connect();
+       db = await con.db("ekalydb");
+       let token = await tokenHelper.getTokenFromBearerToken(authorization);
+       let user = await tokenHelper.getUserByToken(db, token);
+       user._id = await  new String(user._id).toString();
+       let query = {id_utilisateur : user._id};
+       console.log(query);
+       let result = db.collection("Restaurant").find(query);
+       return result.toArray();
+         
+     }catch(err){
+         console.log(err);
+        throw err;
+     } finally {
+      //   if(con!=null) con.close();
+     }
+   }
+
+   
+
    async get_all_plat_by_id_restaurant_with_connexion(db , id) {
       var query = {"id_restaurant" : id}
       console.log(query);
@@ -109,6 +160,14 @@ module.exports = class RestaurantModel{
       return result;
    }
 
+   
+   async get_all_commande_en_cour_by_restaurant_with_connexion(db , restaurant) {
+      var query = {"restaurant" : restaurant}
+      console.log(query);
+      var result = await  db.collection("Commande").find(query).toArray()
+   
+      return result;
+   }
    //   async get_restaurant_by_id(data) {
    //      let con = null;
    //      let db = null;0

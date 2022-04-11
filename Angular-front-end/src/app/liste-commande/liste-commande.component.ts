@@ -5,7 +5,7 @@ import { RestaurantService } from '../service/restaurant.service';
 @Component({
   selector: 'app-liste-commande',
   templateUrl: './liste-commande.component.html',
-  styleUrls: ['./liste-commande.component.css']
+  styleUrls: ['./liste-commande.component.css','../menu/menu.component.css']
 })
 export class ListeCommandeComponent implements OnInit {
   text_welcome : any = "Vos Commandes"; 

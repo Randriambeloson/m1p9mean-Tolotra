@@ -15,6 +15,7 @@
                 <li><a [routerLink]="['/menu']" (click)="addClassActive($event)" id="menu">Menu</a></li>
                 <li ><a [routerLink]="'/login'" (click)="addClassActive($event)" id="contact">Contact</a></li>
                 <li *ngIf="isConnected"><a [routerLink]="'/commande'" (click)="addClassActive($event)" id="commande" >Mes Commandes</a></li>
+                <li *ngIf="isConnected"><a [routerLink]="'/profil'" (click)="addClassActive($event)" id="profil" >Profil</a></li>
                 <li *ngIf="isConnected"><a [routerLink]="router.url" (click)="deconnexion()" >Deconnexion</a></li>
                 <li *ngIf="!isConnected"><a [routerLink]="'/login'" id="login">login</a></li>
               </ul>
@@ -24,7 +25,7 @@
       </div>
 </div>
 
-<section class="tm-welcome-section">
+<section class="tm-welcome-section" id="banniere">
     <div class="container tm-position-relative">
       <div class="tm-lights-container">
         <img src="/assets/images/light.png" alt="Light" class="light light-1">

@@ -21,6 +21,7 @@ export class MenuComponent implements OnInit {
   }
 
   init() {
+    this.componentService.show_header();
     this.componentService.show_loader();
     this.componentService.addClassActive('menu');
     this.get_all_restaurent();
@@ -54,7 +55,12 @@ export class MenuComponent implements OnInit {
   }
 
   commanderPlat(plat) {
-    this.popupService.showConfirm("Voulez-vous vraiment commander ce plat" , ()=>{this.commanderPlatDirect(plat)});
+    if(localStorage.getItem('token')!=undefined) {
+      this.popupService.showConfirm("Voulez-vous vraiment commander ce plat" , ()=>{this.commanderPlatDirect(plat)});
+    } else {
+      this.popupService.showConfirm("Vous devez dabord vous connectez" , ()=>{this.router.navigate(['/login'])});
+    }
+    
   }
 
   commanderPlatDirect(plat) {

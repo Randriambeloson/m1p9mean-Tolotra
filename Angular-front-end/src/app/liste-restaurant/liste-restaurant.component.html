@@ -1,0 +1,72 @@
+<app-menu-vertical></app-menu-vertical>
+<div class="contenu-site">
+    <div class="tm-main-section light-gray-bg">
+        <div class="container" id="main">
+            <section class="tm-section row">
+                <div class="col-lg-12 tm-section-header-container margin-bottom-30">
+                    <h2 class="tm-section-header gold-text tm-handwriting-font"><img src="/assets/images/favicon.ico" alt="Logo" class="tm-site-logo"> Vos Restaurants</h2>
+                    <div class="tm-hr-container"><hr class="tm-hr"></div>
+                </div>
+                <div class="liste" >
+                    <table class="table table-hover" style="text-align: center;">
+                        <thead class="thead-dark" >
+                            <tr>
+                                <th>Nom restaurant</th>
+                                <th>Date Creation</th>
+                                <th>Liste comande en cour</th>
+                                <th>Liste Plat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of restaurant_tab">
+                                <td>{{data.nom_restaurant}}</td>
+                                <td>11/04/2022</td>
+                                <td class="pointer" (click)="voirListeCommandeEnCour(data)">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                </td>
+                                <td class="pointer" (click) = "voirListePlat(data)">
+                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <section class="tm-section row mt-5" style="width: 90%; margin-left: 5%;" *ngIf="commande_tab.length>0">
+                    <div class="col-lg-12 tm-section-header-container margin-bottom-30">
+                        <h5 class="tm-section-header gold-text tm-handwriting-font"><img src="/assets/images/restaurant.svg" alt="Logo" class="tm-site-logo-1" style="font-size: 10px;"> Commande Saang Bang</h5>
+                        <div class="tm-hr-container-1"><hr class="tm-hr"></div>
+                    </div>
+                    <div class="liste" >
+                        <table class="table table-hover" style="text-align: center;">
+                            <thead class="thead-dark" >
+                                <tr>
+                                    <th>Nom restaurant</th>
+                                    <th>Nom plat</th>
+                                    <th>Nom Client</th>
+                                    <th>Date Livraison</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of commande_tab">
+                                    <td>{{data.restaurant.nom_restaurant}}</td>
+                                    <td>{{data.plat.nom_plat}}</td>
+                                    <td>{{data.utilisateur.nom}}</td>
+                                    <td>11/04/2022</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <section class="tm-section row mt-5" style="width: 90%; margin-left: 5%;" *ngIf="plat_tab.length>0">
+                    <div class="col-lg-12 tm-section-header-container margin-bottom-30">
+                        <h5 class="tm-section-header gold-text tm-handwriting-font"><img src="/assets/images/restaurant.svg" alt="Logo" class="tm-site-logo-1" style="font-size: 10px;"> Plat Saang Bang</h5>
+                        <div class="tm-hr-container-1"><hr class="tm-hr"></div>
+                    </div>
+                    <div class="tm-menu-product-content col-lg-9 col-md-9" *ngIf="plat_tab"> <!-- menu content -->
+                        <app-card-plat *ngFor="let data of plat_tab" (click)="commanderPlat(data)" nom="{{data.nom_plat}}" details="{{data.details}}" prix = "{{data.prix}}" image="/assets/images/menu-1.jpg"></app-card-plat>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+</div>
