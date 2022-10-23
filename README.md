@@ -25,9 +25,9 @@ Restaurateur:
 -Liste Plat par restaurant
 -Liste commande par restaurant
 -Ajout Plat
--Ajout Plat Visible (en cour)
+-Ajout Plat Visible
 
-Livreur (en cour)
+Livreur
 
-Admin e-kaly(en cour)
+Admin e-kaly
 
