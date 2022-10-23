@@ -4,7 +4,7 @@ Projet individuelle e-kaly M1 ITUniversity
 Info Etuidant : 
 Nom : Randriambeloson
 Prenom : Tolotra Kenny
-ETU : 10206
+ETU : 1026
 M1 prom 9
 
 Info application :
@@ -30,4 +30,9 @@ Restaurateur:
 Livreur
 
 Admin e-kaly
+
+
+Info Connexion : 
+login : USER 0001
+mdp : 123456789
 
